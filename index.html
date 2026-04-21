@@ -18,7 +18,7 @@ body{
   align-items:center;
 }
 
-/* MAIN WIDTH */
+/* WIDTH */
 header,.hero,.features,.services,.stats{
   width:100%;
   max-width:1100px;
@@ -53,7 +53,7 @@ header{
   color:#fff;
 }
 
-/* VIDEO CARDS */
+/* CARDS */
 .cards{
   position:relative;
   height:350px;
@@ -62,17 +62,13 @@ header{
   display:flex;
   justify-content:center;
   align-items:center;
-}
-
-  .card{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform-origin:center;
+  perspective:1200px;
 }
 
 .card{
   position:absolute;
+  left:50%;
+  top:50%;
   width:200px;
   height:320px;
   border-radius:20px;
@@ -80,27 +76,13 @@ header{
   transition:all 0.8s ease;
 
   background:linear-gradient(135deg,#222,#444);
+  box-shadow:0 15px 30px rgba(168,85,247,0.25);
+
   display:flex;
   align-items:center;
   justify-content:center;
   color:#fff;
   font-size:20px;
-}
-.card{
-.card{
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:200px;
-  height:320px;
-  border-radius:20px;
-  overflow:hidden;
-  transition:all 0.8s ease;
-
-  background:linear-gradient(135deg,#222,#444);
-
-  /* 🔥 BASE GLOW FOR ALL */
-  box-shadow:0 15px 30px rgba(168,85,247,0.25);
 }
 
 .card::before{
@@ -113,51 +95,36 @@ header{
   opacity:0.35;
   z-index:-1;
 }
-.pos2{
-  transform:translate(-50%,-50%) translateX(0px) translateY(0px) scale(1.15);
-  z-index:5;
 
-  /* 🔥 STRONG GLOW */
-  box-shadow:0 25px 60px rgba(236,72,153,0.7);
-}
-  .cards{
-  perspective:1200px;
-}
-
-  .card:hover{
-  transform:translate(-50%,-50%) scale(1.2) !important;
-  z-index:10;
-}
-  
 .card span{
   position:absolute;
   z-index:2;
 }
 
-.card video{width:100%;height:100%;object-fit:cover}
+.card video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-/* POSITIONS (FIXED SYSTEM) */
 /* CURVED POSITIONS */
 .pos0{
   transform:translate(-50%,-50%) translateX(-300px) translateY(60px) rotate(-18deg) scale(0.8);
   opacity:0.6;
 }
-
 .pos1{
   transform:translate(-50%,-50%) translateX(-150px) translateY(30px) rotate(-8deg) scale(0.9);
   opacity:0.8;
 }
-
 .pos2{
-  transform:translate(-50%,-50%) translateX(0px) translateY(0px) scale(1.1);
+  transform:translate(-50%,-50%) translateX(0px) scale(1.15);
   z-index:5;
+  box-shadow:0 25px 60px rgba(236,72,153,0.7);
 }
-
 .pos3{
   transform:translate(-50%,-50%) translateX(150px) translateY(30px) rotate(8deg) scale(0.9);
   opacity:0.8;
 }
-
 .pos4{
   transform:translate(-50%,-50%) translateX(300px) translateY(60px) rotate(18deg) scale(0.8);
   opacity:0.6;
@@ -269,11 +236,11 @@ footer{
 /* MOBILE */
 @media (max-width:768px){
   .card{width:130px;height:220px;}
-  .pos0{transform:translateX(-140px);}
-  .pos1{transform:translateX(-70px);}
-  .pos2{transform:translateX(0);}
-  .pos3{transform:translateX(70px);}
-  .pos4{transform:translateX(140px);}
+  .pos0{transform:translate(-50%,-50%) translateX(-140px) translateY(40px);}
+  .pos1{transform:translate(-50%,-50%) translateX(-70px) translateY(20px);}
+  .pos2{transform:translate(-50%,-50%) translateX(0);}
+  .pos3{transform:translate(-50%,-50%) translateX(70px) translateY(20px);}
+  .pos4{transform:translate(-50%,-50%) translateX(140px) translateY(40px);}
   .feature-box{width:90%}
 }
 </style>
@@ -292,116 +259,37 @@ footer{
   <button class="btn" onclick="scrollToWork()">View Work</button>
   <button class="btn" onclick="openForm()">Start Project</button>
 
- <div class="cards">
-
-  <div class="card pos0"><video src="video1.mp4" autoplay loop muted playsinline></video><span>Video 1</span></div>
-
-  <div class="card pos1"><video src="video2.mp4" autoplay loop muted playsinline></video><span>Video 2</span></div>
-
-  <div class="card pos2"><video src="video3.mp4" autoplay loop muted playsinline></video><span>Video 3</span></div>
-
-  <div class="card pos3"><video src="video4.mp4" autoplay loop muted playsinline></video><span>Video 4</span></div>
-
-  <div class="card pos4"><video src="video5.mp4" autoplay loop muted playsinline></video><span>Video 5</span></div>
- </div>
-  
-</section>
-
-<section class="stats">
-  <div class="stat">50+ Videos Edited</div>
-  <div class="stat">30% Avg Retention Boost</div>
-  <div class="stat">Fast Delivery</div>
-</section>
-
-<section class="features" id="work">
-  <div class="feature-box">
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
-    <h3>Project 1</h3>
-  </div>
-
-  <div class="feature-box">
-    <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U"></iframe>
-    <h3>Project 2</h3>
+  <div class="cards">
+    <div class="card pos0"><video src="video1.mp4" autoplay loop muted playsinline></video><span>Video 1</span></div>
+    <div class="card pos1"><video src="video2.mp4" autoplay loop muted playsinline></video><span>Video 2</span></div>
+    <div class="card pos2"><video src="video3.mp4" autoplay loop muted playsinline></video><span>Video 3</span></div>
+    <div class="card pos3"><video src="video4.mp4" autoplay loop muted playsinline></video><span>Video 4</span></div>
+    <div class="card pos4"><video src="video5.mp4" autoplay loop muted playsinline></video><span>Video 5</span></div>
   </div>
 </section>
-
-<section class="about">
-  <h2>About Me</h2>
-  <p>I help creators and businesses grow with high-quality video editing.</p>
-</section>
-
-<section class="services">
-  <h2>Services</h2>
-  <div class="service-list">
-    <div class="service">YouTube Editing</div>
-    <div class="service">Reels Editing</div>
-  </div>
-</section>
-
-<!-- FORM -->
-<div id="formModal" class="modal">
-  <div class="modal-box">
-    <span onclick="closeForm()" style="float:right;cursor:pointer">✖</span>
-    <h2>Start Project</h2>
-
-    <form action="https://formspree.io/f/xwvarpde" method="POST">
-      <div class="row">
-        <input type="text" name="name" placeholder="Full Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-      </div>
-
-      <select name="project">
-        <option>Reels</option>
-        <option>YouTube</option>
-      </select>
-
-      <button class="btn">Submit</button>
-    </form>
-  </div>
-</div>
-
-<footer>
-  <p>© 2026 Portfolio</p>
-</footer>
 
 <script>
 // typing
 const text = "I Make Videos That Get Views & Results";
 let i=0;
-function type(){
+(function type(){
   if(i<text.length){
-    document.getElementById("typing").innerHTML+=text[i];
-    i++;
+    document.getElementById("typing").innerHTML+=text[i++];
     setTimeout(type,40);
   }
-}
-type();
+})();
 
-// scroll
-function scrollToWork(){
-  document.getElementById("work").scrollIntoView({behavior:"smooth"});
-}
-
-// form
-function openForm(){document.getElementById("formModal").style.display="flex";}
-function closeForm(){document.getElementById("formModal").style.display="none";}
-
-// 🔥 FIXED SLIDER
+// slider
 const cards = document.querySelectorAll(".card");
-
 setInterval(()=>{
   cards.forEach(card=>{
     let pos = [...card.classList].find(c=>c.startsWith("pos"));
     let num = parseInt(pos.replace("pos",""));
     card.classList.remove(pos);
-    card.classList.add("pos" + ((num+1)%5));
+    card.classList.add("pos"+((num+1)%5));
   });
 },2000);
 </script>
-
-<a href="https://wa.me/917015425540?text=Hi%20I%20want%20to%20start%20a%20project" class="whatsapp">
-Chat
-</a>
 
 </body>
 </html>
