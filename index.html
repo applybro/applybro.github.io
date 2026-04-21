@@ -86,7 +86,47 @@ header{
   color:#fff;
   font-size:20px;
 }
+.card{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:200px;
+  height:320px;
+  border-radius:20px;
+  overflow:hidden;
+  transition:all 0.8s ease;
 
+  background:linear-gradient(135deg,#222,#444);
+
+  /* 🔥 ADD THIS */
+  box-shadow:0 20px 40px rgba(0,0,0,0.8);
+}
+
+  .card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:20px;
+  background:linear-gradient(135deg,#a855f7,#ec4899);
+  filter:blur(25px);
+  opacity:0.4;
+  z-index:-1;
+}
+  .pos2{
+  transform:translate(-50%,-50%) translateX(0px) translateY(0px) scale(1.15);
+  z-index:5;
+
+  box-shadow:0 30px 60px rgba(168,85,247,0.6);
+}
+  .cards{
+  perspective:1200px;
+}
+
+  .card:hover{
+  transform:translate(-50%,-50%) scale(1.2) !important;
+  z-index:10;
+}
+  
 .card span{
   position:absolute;
   z-index:2;
