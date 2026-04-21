@@ -255,6 +255,17 @@ footer{
     width:90%;
   }
 }
+
+  .fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.6s;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
 </style>
 </head>
 
@@ -294,7 +305,7 @@ footer{
     <p>YouTube Long Video Edit</p>
   </div>
 
-  <div class="feature-box">
+  <section class="features fade">
     <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" allowfullscreen></iframe>
     <h3>Project 2</h3>
     <p>Reels / Shorts Editing</p>
@@ -302,7 +313,7 @@ footer{
 
 </section>
 
-<section class="services">
+<section class="services fade">
   <h2>Services</h2>
   <div class="service-list">
     <div class="service">YouTube Editing</div>
@@ -357,6 +368,37 @@ function scrollToWork(){
 const budget = document.getElementById("budget");
 const value = document.getElementById("budgetValue");
 budget.oninput = ()=> value.innerText = budget.value;
+
+  <script>
+let index = 0;
+setInterval(()=>{
+  const cards = document.querySelectorAll(".card");
+  index++;
+
+  cards.forEach((card,i)=>{
+    let pos = (i + index) % cards.length;
+
+    if(pos === 0) card.style.transform = "translateX(-300px) rotate(-18deg) scale(0.8)";
+    if(pos === 1) card.style.transform = "translateX(-150px) rotate(-8deg) scale(0.9)";
+    if(pos === 2) card.style.transform = "translateX(0px) scale(1.1)";
+    if(pos === 3) card.style.transform = "translateX(150px) rotate(8deg) scale(0.9)";
+    if(pos === 4) card.style.transform = "translateX(300px) rotate(18deg) scale(0.8)";
+  });
+
+},2000);
+</script>
+</script>
+  <script>
+const fades = document.querySelectorAll(".fade");
+
+window.addEventListener("scroll",()=>{
+  fades.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add("show");
+    }
+  });
+});
 </script>
 <a href="https://wa.me/917015425540?text=Hi%20I%20want%20to%20start%20a%20project" class="whatsapp">
   Chat Now
