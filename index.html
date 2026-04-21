@@ -297,6 +297,38 @@ header,
   max-width:1100px;
 }
 </style>
+
+  <style>
+
+/* तुम्हारा पूरा existing CSS ऊपर रहेगा */
+
+
+/* MOBILE FIX */
+@media (max-width: 768px){
+  ...
+}
+
+/* FADE ANIMATION */
+.fade{...}
+
+/* TYPING */
+#typing{...}
+
+
+/* 🔥 3D PERSPECTIVE (यहाँ paste करो) */
+.hero{
+  perspective:1000px;
+}
+
+.hero h1,
+.hero p,
+.cards{
+  transition: transform 0.1s linear;
+  transform-style: preserve-3d;
+}
+
+</style>
+  
 </head>
 
 <body>
@@ -418,18 +450,24 @@ setInterval(()=>{
 
 },2000);
 </script>
-  <script>
-const fades = document.querySelectorAll(".fade");
 
-window.addEventListener("scroll",()=>{
-  fades.forEach(el=>{
-    const top = el.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      el.classList.add("show");
-    }
-  });
+  <script>
+window.addEventListener("scroll", () => {
+  let scroll = window.scrollY;
+
+  const title = document.querySelector("#typing");
+  const text = document.querySelector(".hero p");
+  const cards = document.querySelector(".cards");
+
+  // 🔥 upward lift effect (Z axis + Y move)
+  title.style.transform = `translateY(${-scroll * 0.2}px) translateZ(${scroll * 0.3}px)`;
+  
+  text.style.transform = `translateY(${-scroll * 0.15}px) translateZ(${scroll * 0.2}px)`;
+  
+  cards.style.transform = `translateY(${-scroll * 0.1}px) translateZ(${scroll * 0.4}px)`;
 });
-    </script>
+</script>
+  
  <script>
 window.addEventListener("scroll", () => {
   let scrollY = window.scrollY;
