@@ -58,6 +58,7 @@ header{
   position:relative;
   height:350px;
   margin-top:80px;
+  perspective:1000px;
 }
 
 .card{
@@ -66,16 +67,17 @@ header{
   height:320px;
   border-radius:20px;
   overflow:hidden;
-  transition:0.5s;
+  transition:all 0.8s ease;
 }
 
 .card video{width:100%;height:100%;object-fit:cover}
 
-.card:nth-child(1){transform:translateX(-300px) rotate(-18deg) scale(0.8);}
-.card:nth-child(2){transform:translateX(-150px) rotate(-8deg) scale(0.9);}
-.card:nth-child(3){transform:translateX(0px) scale(1.1);}
-.card:nth-child(4){transform:translateX(150px) rotate(8deg) scale(0.9);}
-.card:nth-child(5){transform:translateX(300px) rotate(18deg) scale(0.8);}
+/* POSITIONS (FIXED SYSTEM) */
+.pos0{transform:translateX(-300px) rotate(-18deg) scale(0.8); opacity:0.6;}
+.pos1{transform:translateX(-150px) rotate(-8deg) scale(0.9); opacity:0.8;}
+.pos2{transform:translateX(0px) scale(1.1); z-index:5;}
+.pos3{transform:translateX(150px) rotate(8deg) scale(0.9); opacity:0.8;}
+.pos4{transform:translateX(300px) rotate(18deg) scale(0.8); opacity:0.6;}
 
 /* STATS */
 .stats{
@@ -182,14 +184,12 @@ footer{
 
 /* MOBILE */
 @media (max-width:768px){
-  .card{
-    width:130px;height:220px;
-  }
-  .card:nth-child(1){transform:translateX(-140px);}
-  .card:nth-child(2){transform:translateX(-70px);}
-  .card:nth-child(3){transform:translateX(0);}
-  .card:nth-child(4){transform:translateX(70px);}
-  .card:nth-child(5){transform:translateX(140px);}
+  .card{width:130px;height:220px;}
+  .pos0{transform:translateX(-140px);}
+  .pos1{transform:translateX(-70px);}
+  .pos2{transform:translateX(0);}
+  .pos3{transform:translateX(70px);}
+  .pos4{transform:translateX(140px);}
   .feature-box{width:90%}
 }
 </style>
@@ -209,11 +209,11 @@ footer{
   <button class="btn" onclick="openForm()">Start Project</button>
 
   <div class="cards">
-    <div class="card"><video src="video1.mp4" autoplay loop muted></video></div>
-    <div class="card"><video src="video2.mp4" autoplay loop muted></video></div>
-    <div class="card"><video src="video3.mp4" autoplay loop muted></video></div>
-    <div class="card"><video src="video4.mp4" autoplay loop muted></video></div>
-    <div class="card"><video src="video5.mp4" autoplay loop muted></video></div>
+    <div class="card pos0"><video src="video1.mp4" autoplay loop muted></video></div>
+    <div class="card pos1"><video src="video2.mp4" autoplay loop muted></video></div>
+    <div class="card pos2"><video src="video3.mp4" autoplay loop muted></video></div>
+    <div class="card pos3"><video src="video4.mp4" autoplay loop muted></video></div>
+    <div class="card pos4"><video src="video5.mp4" autoplay loop muted></video></div>
   </div>
 </section>
 
@@ -235,14 +235,11 @@ footer{
   </div>
 </section>
 
-  <section class="about">
+<section class="about">
   <h2>About Me</h2>
-  <p>
-    I help creators and businesses grow with high-quality video editing.
-    I specialize in YouTube, Reels and engaging content.
-  </p>
+  <p>I help creators and businesses grow with high-quality video editing.</p>
 </section>
-  
+
 <section class="services">
   <h2>Services</h2>
   <div class="service-list">
@@ -299,20 +296,15 @@ function scrollToWork(){
 function openForm(){document.getElementById("formModal").style.display="flex";}
 function closeForm(){document.getElementById("formModal").style.display="none";}
 
-// auto cards
-let index=0;
+// 🔥 FIXED SLIDER
+const cards = document.querySelectorAll(".card");
+
 setInterval(()=>{
-  const c=document.querySelectorAll(".card");
-  index++;
-  c.forEach((el,i)=>{
-    let p=(i+index)%5;
-    el.style.transform=[
-      "translateX(-300px) rotate(-18deg) scale(0.8)",
-      "translateX(-150px) rotate(-8deg) scale(0.9)",
-      "translateX(0px) scale(1.1)",
-      "translateX(150px) rotate(8deg) scale(0.9)",
-      "translateX(300px) rotate(18deg) scale(0.8)"
-    ][p];
+  cards.forEach(card=>{
+    let pos = [...card.classList].find(c=>c.startsWith("pos"));
+    let num = parseInt(pos.replace("pos",""));
+    card.classList.remove(pos);
+    card.classList.add("pos" + ((num+1)%5));
   });
 },2000);
 </script>
