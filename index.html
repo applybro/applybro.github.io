@@ -58,7 +58,17 @@ header{
   position:relative;
   height:350px;
   margin-top:80px;
-  perspective:1000px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+  .card{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform-origin:center;
 }
 
 .card{
@@ -85,11 +95,11 @@ header{
 .card video{width:100%;height:100%;object-fit:cover}
 
 /* POSITIONS (FIXED SYSTEM) */
-.pos0{transform:translateX(-300px) rotate(-18deg) scale(0.8); opacity:0.6;}
-.pos1{transform:translateX(-150px) rotate(-8deg) scale(0.9); opacity:0.8;}
-.pos2{transform:translateX(0px) scale(1.1); z-index:5;}
-.pos3{transform:translateX(150px) rotate(8deg) scale(0.9); opacity:0.8;}
-.pos4{transform:translateX(300px) rotate(18deg) scale(0.8); opacity:0.6;}
+.pos0{transform:translate(-50%,-50%) translateX(-300px) rotate(-18deg) scale(0.8);}
+.pos1{transform:translate(-50%,-50%) translateX(-150px) rotate(-8deg) scale(0.9);}
+.pos2{transform:translate(-50%,-50%) translateX(0px) scale(1.1);}
+.pos3{transform:translate(-50%,-50%) translateX(150px) rotate(8deg) scale(0.9);}
+.pos4{transform:translate(-50%,-50%) translateX(300px) rotate(18deg) scale(0.8);}
 
 /* STATS */
 .stats{
