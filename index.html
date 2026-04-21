@@ -48,6 +48,7 @@ header{
 }
 
 /* VIDEO CARDS FIXED */
+/* VIDEO CARDS FIXED */
 .cards{
   position:relative;
   height:350px;
@@ -73,6 +74,26 @@ header{
   object-fit:cover;
 }
 
+.card:nth-child(1){
+  transform:translateX(-300px) rotate(-18deg) scale(0.8);
+}
+.card:nth-child(2){
+  transform:translateX(-150px) rotate(-8deg) scale(0.9);
+}
+.card:nth-child(3){
+  transform:translateX(0px) scale(1.1);
+}
+.card:nth-child(4){
+  transform:translateX(150px) rotate(8deg) scale(0.9);
+}
+.card:nth-child(5){
+  transform:translateX(300px) rotate(18deg) scale(0.8);
+}
+
+.card:hover{
+  transform:translateX(0) scale(1.2) !important;
+  z-index:10;
+}
 /* PERFECT 5-CARD LAYOUT */
 .card:nth-child(1){
   transform:translateX(-300px) rotate(-18deg) scale(0.8);
