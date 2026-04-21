@@ -173,6 +173,26 @@ input,select{
   color:#fff;
 }
 
+/* RANGE SLIDER */
+input[type="range"]{
+  width:100%;
+  margin:15px 0;
+  -webkit-appearance:none;
+  height:6px;
+  border-radius:10px;
+  background:linear-gradient(90deg,#a855f7,#ec4899);
+}
+
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#fff;
+  cursor:pointer;
+  box-shadow:0 0 10px #ec4899;
+}
+
 /* FOOTER */
 footer{
   text-align:center;
@@ -201,6 +221,7 @@ footer{
 .pos2{transform:translate(-50%,-50%) translateX(0);}
 .pos3{transform:translate(-50%,-50%) translateX(70px) translateY(20px);}
 .pos4{transform:translate(-50%,-50%) translateX(140px) translateY(40px);}
+.feature-box{width:90%}
 }
 </style>
 </head>
@@ -269,17 +290,8 @@ footer{
 <option>YouTube</option>
 </select>
 
-<!-- 💰 BUDGET -->
-<select name="budget">
-<option value="">Select Budget</option>
-<option>$10</option>
-<option>$50</option>
-<option>$100</option>
-<option>$500</option>
-<option>$1000</option>
-<option>$5000</option>
-<option>$10000</option>
-</select>
+<label>Project Budget: <span id="budgetValue">$500</span></label>
+<input type="range" name="budget" min="10" max="1000" step="10" value="500" id="budgetRange">
 
 <button class="btn">Submit</button>
 </form>
@@ -309,7 +321,7 @@ formModal.style.display="none";
 document.body.style.overflow="auto";
 }
 
-// slider
+// slider cards
 const cards=document.querySelectorAll(".card");
 setInterval(()=>{
 cards.forEach(c=>{
@@ -319,6 +331,14 @@ c.classList.remove(p);
 c.classList.add("pos"+((n+1)%5));
 });
 },2000);
+
+// budget live value
+const budgetRange=document.getElementById("budgetRange");
+const budgetValue=document.getElementById("budgetValue");
+
+budgetRange.addEventListener("input",()=>{
+budgetValue.innerText="$"+budgetRange.value;
+});
 </script>
 
 <a href="https://wa.me/917015425540?text=Hi" class="whatsapp">Chat</a>
