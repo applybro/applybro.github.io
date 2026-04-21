@@ -266,6 +266,14 @@ footer{
   opacity:1;
   transform:translateY(0);
 }
+
+  /* SMOOTH SCROLL EFFECT */
+.hero h1,
+.hero p,
+.cards{
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
 </style>
 </head>
 
@@ -399,6 +407,22 @@ window.addEventListener("scroll",()=>{
     }
   });
 });
+ <script>
+window.addEventListener("scroll", () => {
+  let scrollY = window.scrollY;
+
+  // text move
+  document.querySelector(".hero h1").style.transform =
+    `translateY(${scrollY * 0.3}px)`;
+
+  document.querySelector(".hero p").style.transform =
+    `translateY(${scrollY * 0.2}px)`;
+
+  // cards move (opposite direction for depth)
+  document.querySelector(".cards").style.transform =
+    `translateY(${scrollY * -0.2}px)`;
+});
+</script>   
 </script>
 <a href="https://wa.me/917015425540?text=Hi%20I%20want%20to%20start%20a%20project" class="whatsapp">
   Chat Now
