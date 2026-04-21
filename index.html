@@ -253,22 +253,24 @@ footer{
     <span onclick="closeForm()" style="float:right;cursor:pointer">✖</span>
     <h2>Start Project</h2>
 
-    <form action="https://formspree.io/f/yourID" method="POST">
+    <form action="https://formspree.io/f/xwvarpde" method="POST">
+
       <div class="row">
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email" required>
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
       </div>
 
-      <select>
-        <option>Project Type</option>
-        <option>Reels</option>
-        <option>YouTube</option>
+      <select name="project" required>
+        <option value="">Select Project Type</option>
+        <option value="Reels">Reels</option>
+        <option value="YouTube">YouTube</option>
       </select>
 
       <label>Budget: $<span id="budgetValue">500</span></label>
-      <input type="range" min="20" max="10000" value="500" id="budget">
+      <input type="range" name="budget" min="20" max="10000" value="500" id="budget">
 
-      <button class="btn">Submit</button>
+      <button type="submit" class="btn">Start Project</button>
+
     </form>
   </div>
 </div>
