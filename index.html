@@ -47,8 +47,7 @@ header{
   box-shadow:0 0 15px #a855f7;
 }
 
-/* VIDEO CARDS FIXED */
-/* VIDEO CARDS FIXED */
+/* VIDEO CARDS */
 .cards{
   position:relative;
   height:350px;
@@ -74,81 +73,41 @@ header{
   object-fit:cover;
 }
 
-.card:nth-child(1){
-  transform:translateX(-300px) rotate(-18deg) scale(0.8);
-}
-.card:nth-child(2){
-  transform:translateX(-150px) rotate(-8deg) scale(0.9);
-}
-.card:nth-child(3){
-  transform:translateX(0px) scale(1.1);
-}
-.card:nth-child(4){
-  transform:translateX(150px) rotate(8deg) scale(0.9);
-}
-.card:nth-child(5){
-  transform:translateX(300px) rotate(18deg) scale(0.8);
-}
+.card:nth-child(1){transform:translateX(-300px) rotate(-18deg) scale(0.8);}
+.card:nth-child(2){transform:translateX(-150px) rotate(-8deg) scale(0.9);}
+.card:nth-child(3){transform:translateX(0px) scale(1.1);}
+.card:nth-child(4){transform:translateX(150px) rotate(8deg) scale(0.9);}
+.card:nth-child(5){transform:translateX(300px) rotate(18deg) scale(0.8);}
 
 .card:hover{
   transform:translateX(0) scale(1.2) !important;
   z-index:10;
 }
-/* PERFECT 5-CARD LAYOUT */
-.card:nth-child(1){
-  transform:translateX(-300px) rotate(-18deg) scale(0.8);
-  z-index:1;
-}
-.card:nth-child(2){
-  transform:translateX(-150px) rotate(-8deg) scale(0.9);
-  z-index:2;
-}
-.card:nth-child(3){
-  transform:translateX(0px) scale(1.1);
-  z-index:5;
-}
-.card:nth-child(4){
-  transform:translateX(150px) rotate(8deg) scale(0.9);
-  z-index:2;
-}
-.card:nth-child(5){
-  transform:translateX(300px) rotate(18deg) scale(0.8);
-  z-index:1;
+
+/* FEATURES (VIDEO SECTION) */
+.features{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  margin:100px 20px;
+  flex-wrap:wrap;
 }
 
-/* HOVER */
-.card:hover{
-  transform:translateX(0) scale(1.2) !important;
-  z-index:10;
+.feature-box{
+  width:320px;
+  background:#111;
+  border-radius:15px;
+  padding:15px;
 }
 
-/* FEATURES */
-<div class="feature-box">
-  <iframe 
-    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
- .feature-box iframe{
-  width:100%;
-  aspect-ratio:16/9;
-  border-radius:10px;
-  margin-bottom:10px;
-}
-</div>
-<div class="feature-box">
-  <iframe 
-    src="https://www.youtube.com/embed/ysz5S6PUM-U" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
+/* YouTube video size */
 .feature-box iframe{
   width:100%;
   aspect-ratio:16/9;
   border-radius:10px;
   margin-bottom:10px;
 }
-</div>
+
 /* SERVICES */
 .services{text-align:center;padding:50px}
 
@@ -234,15 +193,21 @@ footer{
   </div>
 </section>
 
+<!-- ✅ FIXED VIDEO SECTION -->
 <section class="features" id="work">
+
   <div class="feature-box">
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
     <h3>Project 1</h3>
-    <p>Increased retention by 35%</p>
+    <p>YouTube Long Video Edit</p>
   </div>
+
   <div class="feature-box">
+    <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" allowfullscreen></iframe>
     <h3>Project 2</h3>
-    <p>High converting ad edits</p>
+    <p>Reels / Shorts Editing</p>
   </div>
+
 </section>
 
 <section class="services">
@@ -291,7 +256,6 @@ function openForm(){
 function closeForm(){
   document.getElementById("formModal").style.display="none";
 }
-
 function scrollToWork(){
   document.getElementById("work").scrollIntoView({behavior:"smooth"});
 }
