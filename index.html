@@ -274,6 +274,15 @@ footer{
   transition: transform 0.1s linear;
   will-change: transform;
 }
+  #typing{
+  font-size:40px;
+  background:linear-gradient(90deg,#a855f7,#ec4899);
+  -webkit-background-clip:text;
+  color:transparent;
+  transform:scale(0.9);
+  opacity:0;
+  transition:0.3s;
+}
 </style>
 </head>
 
@@ -284,7 +293,7 @@ footer{
 </header>
 
 <section class="hero">
-  <h1>I Help Creators Grow with High Retention Video Editing</h1>
+  <h1 id="typing">I Help Creators Grow with High Retention Video Editing</h1>
   <p>Reels & Long Videos • YouTube • Fast Delivery</p>
 
   <button class="btn" onclick="scrollToWork()">View Work</button>
@@ -423,6 +432,26 @@ window.addEventListener("scroll", () => {
     `translateY(${scrollY * -0.2}px)`;
 });
 </script>   
+  <script>
+const text = "I Help Creators Grow with High Retention Video Editing";
+let i = 0;
+
+function typeEffect(){
+  if(i < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+
+    // smooth zoom + fade
+    let el = document.getElementById("typing");
+    el.style.opacity = 1;
+    el.style.transform = "scale(1)";
+
+    setTimeout(typeEffect, 40); // speed control (40 = smooth)
+  }
+}
+
+window.onload = typeEffect;
+</script>
 <a href="https://wa.me/917015425540?text=Hi%20I%20want%20to%20start%20a%20project" class="whatsapp">
   Chat Now
 </a>
