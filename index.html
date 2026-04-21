@@ -74,15 +74,8 @@ header{
   border-radius:20px;
   overflow:hidden;
   transition:all 0.8s ease;
-
   background:linear-gradient(135deg,#222,#444);
   box-shadow:0 15px 30px rgba(168,85,247,0.25);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size:20px;
 }
 
 .card::before{
@@ -92,13 +85,8 @@ header{
   border-radius:20px;
   background:linear-gradient(135deg,#a855f7,#ec4899);
   filter:blur(20px);
-  opacity:0.35;
+  opacity:0.3;
   z-index:-1;
-}
-
-.card span{
-  position:absolute;
-  z-index:2;
 }
 
 .card video{
@@ -107,28 +95,19 @@ header{
   object-fit:cover;
 }
 
-/* CURVED POSITIONS */
-.pos0{
-  transform:translate(-50%,-50%) translateX(-300px) translateY(60px) rotate(-18deg) scale(0.8);
-  opacity:0.6;
+.card span{
+  position:absolute;
+  z-index:2;
+  top:10px;
+  left:10px;
 }
-.pos1{
-  transform:translate(-50%,-50%) translateX(-150px) translateY(30px) rotate(-8deg) scale(0.9);
-  opacity:0.8;
-}
-.pos2{
-  transform:translate(-50%,-50%) translateX(0px) scale(1.15);
-  z-index:5;
-  box-shadow:0 25px 60px rgba(236,72,153,0.7);
-}
-.pos3{
-  transform:translate(-50%,-50%) translateX(150px) translateY(30px) rotate(8deg) scale(0.9);
-  opacity:0.8;
-}
-.pos4{
-  transform:translate(-50%,-50%) translateX(300px) translateY(60px) rotate(18deg) scale(0.8);
-  opacity:0.6;
-}
+
+/* CURVE POSITIONS */
+.pos0{transform:translate(-50%,-50%) translateX(-300px) translateY(60px) rotate(-18deg) scale(0.8);}
+.pos1{transform:translate(-50%,-50%) translateX(-150px) translateY(30px) rotate(-8deg) scale(0.9);}
+.pos2{transform:translate(-50%,-50%) translateX(0) scale(1.15); z-index:5;}
+.pos3{transform:translate(-50%,-50%) translateX(150px) translateY(30px) rotate(8deg) scale(0.9);}
+.pos4{transform:translate(-50%,-50%) translateX(300px) translateY(60px) rotate(18deg) scale(0.8);}
 
 /* STATS */
 .stats{
@@ -260,13 +239,69 @@ footer{
   <button class="btn" onclick="openForm()">Start Project</button>
 
   <div class="cards">
-    <div class="card pos0"><video src="video1.mp4" autoplay loop muted playsinline></video><span>Video 1</span></div>
-    <div class="card pos1"><video src="video2.mp4" autoplay loop muted playsinline></video><span>Video 2</span></div>
-    <div class="card pos2"><video src="video3.mp4" autoplay loop muted playsinline></video><span>Video 3</span></div>
-    <div class="card pos3"><video src="video4.mp4" autoplay loop muted playsinline></video><span>Video 4</span></div>
-    <div class="card pos4"><video src="video5.mp4" autoplay loop muted playsinline></video><span>Video 5</span></div>
+    <div class="card pos0"><video src="video1.mp4" autoplay loop muted playsinline></video><span>1</span></div>
+    <div class="card pos1"><video src="video2.mp4" autoplay loop muted playsinline></video><span>2</span></div>
+    <div class="card pos2"><video src="video3.mp4" autoplay loop muted playsinline></video><span>3</span></div>
+    <div class="card pos3"><video src="video4.mp4" autoplay loop muted playsinline></video><span>4</span></div>
+    <div class="card pos4"><video src="video5.mp4" autoplay loop muted playsinline></video><span>5</span></div>
   </div>
 </section>
+
+<section class="stats">
+  <div class="stat">50+ Videos Edited</div>
+  <div class="stat">30% Avg Retention Boost</div>
+  <div class="stat">Fast Delivery</div>
+</section>
+
+<section class="features" id="work">
+  <div class="feature-box">
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+    <h3>Project 1</h3>
+  </div>
+  <div class="feature-box">
+    <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U"></iframe>
+    <h3>Project 2</h3>
+  </div>
+</section>
+
+<section class="about">
+  <h2>About Me</h2>
+  <p>I help creators and businesses grow with high-quality video editing.</p>
+</section>
+
+<section class="services">
+  <h2>Services</h2>
+  <div class="service-list">
+    <div class="service">YouTube Editing</div>
+    <div class="service">Reels Editing</div>
+  </div>
+</section>
+
+<!-- FORM -->
+<div id="formModal" class="modal">
+  <div class="modal-box">
+    <span onclick="closeForm()" style="float:right;cursor:pointer">✖</span>
+    <h2>Start Project</h2>
+
+    <form action="https://formspree.io/f/xwvarpde" method="POST">
+      <div class="row">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
+
+      <select name="project">
+        <option>Reels</option>
+        <option>YouTube</option>
+      </select>
+
+      <button class="btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Portfolio</p>
+</footer>
 
 <script>
 // typing
@@ -279,6 +314,15 @@ let i=0;
   }
 })();
 
+// scroll
+function scrollToWork(){
+  document.getElementById("work").scrollIntoView({behavior:"smooth"});
+}
+
+// form
+function openForm(){document.getElementById("formModal").style.display="flex";}
+function closeForm(){document.getElementById("formModal").style.display="none";}
+
 // slider
 const cards = document.querySelectorAll(".card");
 setInterval(()=>{
@@ -290,6 +334,10 @@ setInterval(()=>{
   });
 },2000);
 </script>
+
+<a href="https://wa.me/917015425540?text=Hi%20I%20want%20to%20start%20a%20project" class="whatsapp">
+Chat
+</a>
 
 </body>
 </html>
