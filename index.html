@@ -368,7 +368,7 @@ function smoothScroll() {
   current += (target - current) * 0.08;
 
 
-  const page = document.getElementById("page");
+ const page = document.getElementById("page");
 
 let target = 0;
 let current = 0;
@@ -381,15 +381,10 @@ function animate() {
   let diff = target - current;
   current += diff * 0.08;
 
-  // base smooth movement
-  let baseY = -current * 0.12;
-
-  // shake effect (only while scrolling)
-  let shakeX = diff * 0.3;
-  let shakeY = Math.sin(current * 0.02) * 2;
+  let baseY = -current * 0.08;
 
   page.style.transform =
-    `translate3d(${shakeX}px, ${baseY + shakeY}px, 0)`;
+    `translate3d(0, ${baseY}px, 0)`;
 
   requestAnimationFrame(animate);
 }
