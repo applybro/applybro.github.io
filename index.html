@@ -373,6 +373,7 @@ html, body{
 </section>
 
 <!-- FORM -->
+<!-- FORM -->
 <div id="formModal" class="modal">
 <div class="modal-box">
 <span onclick="closeForm()" style="float:right;cursor:pointer">✖</span>
@@ -422,16 +423,15 @@ document.getElementById("work").scrollIntoView({behavior:"smooth"});
 }
 
 // form
-function openForm(){
-formModal.style.display="flex";
-document.body.style.overflow="hidden";
-window.scrollTo({ top: 0, behavior: "instant" }); //
+const formModal = document.getElementById("formModal");
+function closeForm(){
+  formModal.style.display="none";
+  document.body.style.overflow="auto";
 }
   
 function closeForm(){
-formModal.style.display="none";
-document.body.style.overflow="auto";
-target = window.scrollY;
+  formModal.style.display="none";
+  document.body.style.overflow="auto";
 }
 
 // slider cards
