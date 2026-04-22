@@ -229,8 +229,10 @@ footer{
 .feature-box{width:90%}
 }
 
-  html, body { overflow-x: hidden; perspective: 1000px; }
-#page { transform-style: preserve-3d; }
+  html, body{
+  overflow-x:hidden;
+}
+  
 </style>
 </head>
 
@@ -350,11 +352,25 @@ budgetRange.addEventListener("input",()=>{
 budgetValue.innerText="$"+budgetRange.value;
 });
 
- let lastScroll=0,currentY=0;
-window.addEventListener("scroll",()=>currentY=scrollY);
-function anim(){let d=currentY-lastScroll;lastScroll+=d*0.1;
-page.style.transform=`translateY(${-lastScroll*0.15}px) rotateX(${d*0.2}deg)`;
-requestAnimationFrame(anim);}anim();
+const page = document.getElementById("page");
+
+let target = 0;
+let current = 0;
+
+window.addEventListener("scroll", () => {
+  target = window.scrollY;
+});
+
+function smoothScroll() {
+  current += (target - current) * 0.08;
+
+  page.style.transform =
+    `translate3d(0, ${-current * 0.12}px, 0)`;
+
+  requestAnimationFrame(smoothScroll);
+}
+
+smoothScroll();
   
 </script>
 
