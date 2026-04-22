@@ -232,6 +232,9 @@ footer{
   html, body{
   overflow-x:hidden;
 }
+  #page{
+  will-change: transform;
+}
   
 </style>
 </head>
@@ -364,13 +367,34 @@ window.addEventListener("scroll", () => {
 function smoothScroll() {
   current += (target - current) * 0.08;
 
-  page.style.transform =
-    `translate3d(0, ${-current * 0.12}px, 0)`;
 
-  requestAnimationFrame(smoothScroll);
+  const page = document.getElementById("page");
+
+let target = 0;
+let current = 0;
+
+window.addEventListener("scroll", () => {
+  target = window.scrollY;
+});
+
+function animate() {
+  let diff = target - current;
+  current += diff * 0.08;
+
+  // base smooth movement
+  let baseY = -current * 0.12;
+
+  // shake effect (only while scrolling)
+  let shakeX = diff * 0.3;
+  let shakeY = Math.sin(current * 0.02) * 2;
+
+  page.style.transform =
+    `translate3d(${shakeX}px, ${baseY + shakeY}px, 0)`;
+
+  requestAnimationFrame(animate);
 }
 
-smoothScroll();
+animate();
   
 </script>
 
