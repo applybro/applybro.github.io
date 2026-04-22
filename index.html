@@ -136,6 +136,27 @@ header{
   flex-wrap:wrap;
 }
 
+.service-list{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+
+  .stats, .features, .service-list{
+  width:100%;
+  justify-content:center;
+  align-items:center;
+}
+
+
+  @media(max-width:768px){
+  #page{
+    transform:none !important;
+  }
+}
+  
 .service{
   background:#111;
   padding:20px;
@@ -193,6 +214,18 @@ input[type="range"]::-webkit-slider-thumb{
   box-shadow:0 0 10px #ec4899;
 }
 
+#page{
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+  
 /* FOOTER */
 footer{
   text-align:center;
@@ -201,10 +234,7 @@ footer{
   margin-top:50px;
 }
   
-#page{
-  transition: transform 0.2s ease-out;
-  will-change: transform;
-}
+
   
 /* WHATSAPP */
 .whatsapp{
@@ -235,7 +265,14 @@ footer{
   #page{
   will-change: transform;
 }
-  
+
+
+  section{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
 </style>
 </head>
 
@@ -317,9 +354,20 @@ footer{
 
 <script>
 // typing
-const text="I Make Videos That Get Views & Results";
-let i=0;
-(function t(){if(i<text.length){typing.innerHTML+=text[i++];setTimeout(t,40);}})();
+const text = "I Make Videos That Get Views & Results";
+const typing = document.getElementById("typing");
+
+let i = 0;
+typing.innerHTML = ""; // important reset
+
+function type() {
+  if (i < text.length) {
+    typing.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 40);
+  }
+}
+type();
 
 // scroll
 function scrollToWork(){
@@ -338,14 +386,18 @@ document.body.style.overflow="auto";
 
 // slider cards
 const cards=document.querySelectorAll(".card");
-setInterval(()=>{
-cards.forEach(c=>{
-let p=[...c.classList].find(x=>x.startsWith("pos"));
-let n=parseInt(p.replace("pos",""));
-c.classList.remove(p);
-c.classList.add("pos"+((n+1)%5));
-});
-},2000);
+setInterval(() => {
+  cards.forEach(c => {
+    let currentClass = [...c.classList].find(x => x.startsWith("pos"));
+    if (!currentClass) return;
+
+    let n = Number(currentClass.replace("pos", ""));
+    let next = (n + 1) % 5;
+
+    c.classList.remove(currentClass);
+    c.classList.add("pos" + next);
+  });
+}, 2000);
 
 // budget live value
 const budgetRange=document.getElementById("budgetRange");
