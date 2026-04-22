@@ -289,10 +289,13 @@ footer{
 .feature-box{width:90%}
 }
 
-  html, body{
+/* GLOBAL FIX */
+html, body{
   overflow-x:hidden;
 }
-  #page{
+
+/* SCROLL ANIMATION FIX */
+#page{
   will-change: transform;
 }
 
@@ -410,12 +413,13 @@ document.getElementById("work").scrollIntoView({behavior:"smooth"});
 function openForm(){
 formModal.style.display="flex";
 document.body.style.overflow="hidden";
-  page.style.transform = "none"; //
+page.style.transform = "none";
 }
   
 function closeForm(){
 formModal.style.display="none";
 document.body.style.overflow="auto";
+target = window.scrollY;
 }
 
 // slider cards
