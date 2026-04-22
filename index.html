@@ -200,7 +200,12 @@ footer{
   background:#000;
   margin-top:50px;
 }
-
+  
+#page{
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+  
 /* WHATSAPP */
 .whatsapp{
   position:fixed;
@@ -223,11 +228,16 @@ footer{
 .pos4{transform:translate(-50%,-50%) translateX(140px) translateY(40px);}
 .feature-box{width:90%}
 }
+
+  html, body { overflow-x: hidden; perspective: 1000px; }
+#page { transform-style: preserve-3d; }
 </style>
 </head>
 
 <body>
 
+<div id="page">
+  
 <header><h3>Vikas Edits</h3></header>
 
 <section class="hero">
@@ -339,9 +349,16 @@ const budgetValue=document.getElementById("budgetValue");
 budgetRange.addEventListener("input",()=>{
 budgetValue.innerText="$"+budgetRange.value;
 });
+
+ let lastScroll=0,currentY=0;
+window.addEventListener("scroll",()=>currentY=scrollY);
+function anim(){let d=currentY-lastScroll;lastScroll+=d*0.1;
+page.style.transform=`translateY(${-lastScroll*0.15}px) rotateX(${d*0.2}deg)`;
+requestAnimationFrame(anim);}anim();
+  
 </script>
 
 <a href="https://wa.me/917015425540?text=Hi" class="whatsapp">Chat</a>
-
+</div>
 </body>
 </html>
