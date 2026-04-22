@@ -306,6 +306,21 @@ html, body{
   flex-direction:column;
   align-items:center;
 }
+
+  .modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,0.8);
+  z-index:99999;
+}
+
+.modal-box{
+  position:relative;
+  z-index:100000;
+}
 </style>
 </head>
 
@@ -413,7 +428,6 @@ document.getElementById("work").scrollIntoView({behavior:"smooth"});
 function openForm(){
 formModal.style.display="flex";
 document.body.style.overflow="hidden";
-page.style.transform = "none";
 }
   
 function closeForm(){
