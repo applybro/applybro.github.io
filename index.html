@@ -103,8 +103,13 @@ header{
 .fade-out{
   opacity:0;
   pointer-events:none;
+  transition: opacity 1.2s ease;
 }
 
+  .card{
+  will-change: transform, opacity;
+}
+  
 /* fade in */
 .fade-in{
   opacity:0;
@@ -568,21 +573,29 @@ setInterval(() => {
   c.classList.add("no-move");
   c.classList.add("fade-out");
 
-      setTimeout(() => {
+setTimeout(() => {
 
-        c.classList.remove(currentClass);
-        c.classList.add("pos0");
+  // step 1: keep old position for fade-out (DON'T change pos yet)
+  c.classList.add("fade-out");
 
-        c.classList.remove("fade-out");
-        c.classList.add("fade-in");
+  setTimeout(() => {
 
-       setTimeout(() => {
-  c.classList.remove("fade-in");
-  c.classList.remove("no-move");
-  c.style.zIndex = ""; 
-}, 1200);
+    // step 2: now move it AFTER fade starts
+    c.classList.remove(currentClass);
+    c.classList.add("pos0");
 
-      }, 1200);
+    c.classList.remove("fade-out");
+    c.classList.add("fade-in");
+
+    setTimeout(() => {
+      c.classList.remove("fade-in");
+      c.classList.remove("no-move");
+      c.style.zIndex = "";
+    }, 1200);
+
+  }, 600); // 50% overlap timing
+
+}, 0);
 
     } else {
 
