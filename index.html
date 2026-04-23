@@ -84,6 +84,17 @@ header{
   will-change: transform, opacity;
 }
 
+
+.cards{
+  position:relative;
+  height:350px;
+  margin-top:80px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  perspective:1200px;
+}
+  
 /* slide रोकने के लिए */
 .no-move{
   transition: opacity 1.2s ease !important;
@@ -598,12 +609,6 @@ function closeForm(){
 // slider cards
 // slider cards (OPTIMIZED VERSION)
 const cards = document.querySelectorAll(".card");
-
-let running = false;
-
-const cards = document.querySelectorAll(".card");
-
-let running = false;
 
 setInterval(() => {
 
