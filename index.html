@@ -92,7 +92,16 @@ header{
   box-shadow:0 15px 30px rgba(168,85,247,0.3);
 }
 
+  .fade-out{
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
 
+.no-move{
+  transition: opacity 0.4s ease !important;
+}
+  
   .card{
   opacity: 1;
 }
@@ -541,25 +550,45 @@ setInterval(() => {
     if(n === 4){
       c.classList.add("fade-out");
 
+ setInterval(() => {
+
+  cards.forEach(c => {
+
+    let currentClass = [...c.classList].find(x => x.startsWith("pos"));
+    if (!currentClass) return;
+
+    let n = Number(currentClass.replace("pos", ""));
+    let next = (n + 1) % 5;
+
+    // 👉 ONLY right वाला (pos4)
+    if(n === 4){
+
+      // slide रोकना
+      c.classList.add("no-move");
+
+      // fade out
+      c.classList.add("fade-out");
+
       setTimeout(() => {
 
-        // position change AFTER fade out
+        // position change (invisible)
         c.classList.remove(currentClass);
-        c.classList.add("pos" + next);
+        c.classList.add("pos0");
 
-        // fade in at left
+        // fade in
         c.classList.remove("fade-out");
         c.classList.add("fade-in");
 
         setTimeout(()=>{
           c.classList.remove("fade-in");
+          c.classList.remove("no-move");
         },400);
 
-      }, 400); // wait for fade-out
+      }, 400);
 
     } else {
 
-      // बाकी cards instantly shift (no animation)
+      // 👉 बाकी cards normal slide करेंगे
       c.classList.remove(currentClass);
       c.classList.add("pos" + next);
 
