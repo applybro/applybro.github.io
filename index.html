@@ -372,34 +372,35 @@ html, body{
 </div>
 </section>
 
-<!-- FORM -->
-<!-- FORM -->
-<div id="formModal" class="modal">
-<div class="modal-box">
-<span onclick="closeForm()" style="float:right;cursor:pointer">✖</span>
-<h2>Start Project</h2>
-
-<form action="https://formspree.io/f/xwvarpde" method="POST">
-
-<input type="text" name="name" placeholder="Full Name" required>
-<input type="email" name="email" placeholder="Email" required>
-
-<select name="project">
-<option>Reels</option>
-<option>YouTube</option>
-</select>
-
-<label>Project Budget: <span id="budgetValue">$500</span></label>
-<input type="range" name="budget" min="10" max="1000" step="1" value="500" id="budgetRange">
-
-<button class="btn">Submit</button>
-</form>
-</div>
-</div>
-<div id="formModal" class="modal">
   
-<footer>© 2026 Portfolio</footer>
+<!-- FORM -->
+<!-- FORM -->
+<div id="formModal" class="modal">
+  <div class="modal-box">
+    <span onclick="closeForm()" style="float:right;cursor:pointer">✖</span>
+    <h2>Start Project</h2>
 
+    <form action="https://formspree.io/f/xwvarpde" method="POST">
+
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+
+      <select name="project">
+        <option>Reels</option>
+        <option>YouTube</option>
+      </select>
+
+      <label>Project Budget: <span id="budgetValue">$500</span></label>
+      <input type="range" name="budget" min="10" max="1000" step="1" value="500" id="budgetRange">
+
+      <button class="btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+
+  
 <script>
 // typing
 const text = "I Make Videos That Get Views & Results";
@@ -423,16 +424,21 @@ document.getElementById("work").scrollIntoView({behavior:"smooth"});
 }
 
 // form
+ // form
 const formModal = document.getElementById("formModal");
-function closeForm(){
-  formModal.style.display="none";
-  document.body.style.overflow="auto";
+
+function openForm(){
+  formModal.style.display = "flex";
+  document.body.style.overflow = "hidden";
+  window.scrollTo({ top: 0, behavior: "instant" });
 }
+
+function closeForm(){
+  formModal.style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
   
-function closeForm(){
-  formModal.style.display="none";
-  document.body.style.overflow="auto";
-}
 
 // slider cards
 const cards=document.querySelectorAll(".card");
@@ -449,8 +455,10 @@ setInterval(() => {
   });
 }, 2000);
 
+
+  
 // budget live value
-const budgetRange=document.getElementById("budgetRange");
+
 const budgetValue=document.getElementById("budgetValue");
 
 budgetRange.addEventListener("input",()=>{
@@ -481,6 +489,6 @@ animate();
 </script>
 
 <a href="https://wa.me/917015425540?text=Hi" class="whatsapp">Chat</a>
-</div>
+
 </body>
 </html>
