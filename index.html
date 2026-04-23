@@ -80,7 +80,6 @@ header{
 }
 
 .card{
- .card{
   position:absolute;
   left:50%;
   top:50%;
@@ -609,6 +608,10 @@ function closeForm(){
 
 // slider cards
 // slider cards (OPTIMIZED VERSION)
+const cards = document.querySelectorAll(".card");
+
+let running = false;
+
 const cards = document.querySelectorAll(".card");
 
 let running = false;
