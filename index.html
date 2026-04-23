@@ -497,17 +497,34 @@ function closeForm(){
 // slider cards
 const cards=document.querySelectorAll(".card");
 setInterval(() => {
+
   cards.forEach(c => {
+
     let currentClass = [...c.classList].find(x => x.startsWith("pos"));
     if (!currentClass) return;
 
     let n = Number(currentClass.replace("pos", ""));
+
+    // 👉 सिर्फ last वाले (pos4) को fade करना है
+    if(n === 4){
+      c.classList.add("fade-out");
+
+      setTimeout(() => {
+        c.classList.remove("fade-out");
+      }, 400);
+    }
+
     let next = (n + 1) % 5;
 
-    c.classList.remove(currentClass);
-    c.classList.add("pos" + next);
+    // थोड़ा delay देकर class change
+    setTimeout(() => {
+      c.classList.remove(currentClass);
+      c.classList.add("pos" + next);
+    }, 200);
+
   });
-}, 2000);
+
+}, 2500);
 
 
   
