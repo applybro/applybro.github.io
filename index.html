@@ -337,25 +337,37 @@ html, body{
   
 <div class="cards">
 
-<div class="card pos0">
-<video src="https://res.cloudinary.com/djth0lgol/video/upload/v1776928685/SBI_vs_Bank_of_Baroda_Same_Day_UPI__Sach_jaan_lo_warna_wait_karte_rahoge_qfp3vf.mp4" autoplay loop muted playsinline></video>
-</div>
+<video 
+  src="https://res.cloudinary.com/djth0lgol/video/upload/v1776928685/SBI_vs_Bank_of_Baroda_Same_Day_UPI__Sach_jaan_lo_warna_wait_karte_rahoge_qfp3vf.mp4"
+  autoplay loop muted playsinline
+  onclick="openVideo(this.src)">
+</video>
 
-<div class="card pos1">
-<video src="https://res.cloudinary.com/djth0lgol/video/upload/v1776928685/SBI_vs_Bank_of_Baroda_Same_Day_UPI__Sach_jaan_lo_warna_wait_karte_rahoge_qfp3vf.mp4" autoplay loop muted playsinline></video>
-</div>
+  
+<video 
+  src="https://res.cloudinary.com/djth0lgol/video/upload/v1776928685/SBI_vs_Bank_of_Baroda_Same_Day_UPI__Sach_jaan_lo_warna_wait_karte_rahoge_qfp3vf.mp4"
+  autoplay loop muted playsinline
+  onclick="openVideo(this.src)">
+</video>
 
-<div class="card pos2">
-<video src="https://res.cloudinary.com/djth0lgol/video/upload/v1776928685/SBI_vs_Bank_of_Baroda_Same_Day_UPI__Sach_jaan_lo_warna_wait_karte_rahoge_qfp3vf.mp4" autoplay loop muted playsinline></video>
-</div>
+<video 
+  src="https://res.cloudinary.com/djth0lgol/video/upload/v1776928685/SBI_vs_Bank_of_Baroda_Same_Day_UPI__Sach_jaan_lo_warna_wait_karte_rahoge_qfp3vf.mp4"
+  autoplay loop muted playsinline
+  onclick="openVideo(this.src)">
+</video>
+  
+<video 
+  src="https://res.cloudinary.com/djth0lgol/video/upload/v1776928685/SBI_vs_Bank_of_Baroda_Same_Day_UPI__Sach_jaan_lo_warna_wait_karte_rahoge_qfp3vf.mp4"
+  autoplay loop muted playsinline
+  onclick="openVideo(this.src)">
+</video>
 
-<div class="card pos3">
-<video src="https://res.cloudinary.com/djth0lgol/video/upload/v1776928685/SBI_vs_Bank_of_Baroda_Same_Day_UPI__Sach_jaan_lo_warna_wait_karte_rahoge_qfp3vf.mp4" autoplay loop muted playsinline></video>
-</div>
-
-<div class="card pos4">
-<video src="https://res.cloudinary.com/djth0lgol/video/upload/v1776928685/SBI_vs_Bank_of_Baroda_Same_Day_UPI__Sach_jaan_lo_warna_wait_karte_rahoge_qfp3vf.mp4" autoplay loop muted playsinline></video>
-</div>
+  
+<video 
+  src="https://res.cloudinary.com/djth0lgol/video/upload/v1776928685/SBI_vs_Bank_of_Baroda_Same_Day_UPI__Sach_jaan_lo_warna_wait_karte_rahoge_qfp3vf.mp4"
+  autoplay loop muted playsinline
+  onclick="openVideo(this.src)">
+</video>
 
 </div>
 </section>
@@ -416,6 +428,14 @@ html, body{
 </div>
 
 
+<!-- VIDEO MODAL -->
+<div id="videoModal" class="modal">
+  <div class="modal-box">
+    <span onclick="closeVideo()" style="float:right;cursor:pointer">✖</span>
+    <video id="mainVideo" controls autoplay style="width:100%;border-radius:10px;"></video>
+  </div>
+</div>
+  
 
   
 <script>
@@ -507,6 +527,21 @@ function animate() {
 
 animate();
 
+const videoModal = document.getElementById("videoModal");
+const mainVideo = document.getElementById("mainVideo");
+
+function openVideo(src){
+  videoModal.style.display = "flex";
+  mainVideo.src = src;
+  mainVideo.muted = false;
+  mainVideo.play();
+}
+
+function closeVideo(){
+  videoModal.style.display = "none";
+  mainVideo.pause();
+}
+  
 </script>
 
 <a href="https://wa.me/917015425540?text=Hi" class="whatsapp">Chat</a>
