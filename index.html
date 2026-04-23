@@ -69,22 +69,6 @@ header{
 }
   
 /* CARDS */
-.card{
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:200px;
-  height:320px;
-  border-radius:20px;
-  overflow:hidden;
-  background:#222;
-  box-shadow:0 15px 30px rgba(168,85,247,0.3);
-
-  transition: transform 1.2s ease, opacity 1.2s ease;
-  will-change: transform, opacity;
-}
-
-
 .cards{
   position:relative;
   height:350px;
@@ -94,7 +78,22 @@ header{
   align-items:center;
   perspective:1200px;
 }
-  
+
+.card{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:200px;
+  height:320px;
+  border-radius:20px;
+  overflow:hidden;
+
+  transition: transform 1.2s ease, opacity 1.2s ease;
+
+  background:#222;
+  box-shadow:0 15px 30px rgba(168,85,247,0.3);
+}
+
 /* slide रोकने के लिए */
 .no-move{
   transition: opacity 1.2s ease !important;
@@ -242,7 +241,7 @@ header{
   justify-content:center;
   align-items:center;
   background:rgba(0,0,0,0.8);
-  z-index:99999;
+  z-index:999999;
 }
 
 .modal-box{
@@ -255,7 +254,17 @@ header{
   z-index:10000;
 }
 
-
+  .modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
   
 input,select{
   width:100%;
@@ -325,11 +334,11 @@ footer{
   font-weight: 500;
 
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
- .whatsapp{
+
   animation: pulse 2s infinite;
-  transform-origin: center;
+  transition: transform 0.3s ease;
 }
+  
 
 /* MOBILE */
 @media(max-width:768px){
@@ -355,52 +364,22 @@ html, body{
   align-items:center;
 }
 
-
-  
-.card{
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  .modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,0.8);
+  z-index:99999;
 }
 
-.card:hover{
-  transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(168,85,247,0.4);
-}
-
-  .feature-box, .service{
-  backdrop-filter: blur(10px);
-  background: rgba(17,17,17,0.7);
-  border: 1px solid rgba(255,255,255,0.05);
-}
-  
-h1,h2,h3{
-  letter-spacing: 0.5px;
+.modal-box{
+  position:relative;
+  z-index:100000;
 }
 
 
-  .btn{
-  transition: 0.3s ease;
-}
-
-.btn:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(168,85,247,0.4);
-}
-
-
-:root{
-  --primary:#a855f7;
-  --secondary:#ec4899;
-  --bg:#0a0a0a;
-  --card:#111;
-  --text:#fff;
-  --muted:#aaa;
-}
-
-
-
-  
-  
-  
  @keyframes pulse {
   0%{
     transform: scale(1);
@@ -607,7 +586,6 @@ function closeForm(){
   
 
 // slider cards
-// slider cards (OPTIMIZED VERSION)
 const cards = document.querySelectorAll(".card");
 
 setInterval(() => {
@@ -620,12 +598,50 @@ setInterval(() => {
     let n = Number(currentClass.replace("pos", ""));
     let next = (n + 1) % 5;
 
+   if(n === 4){
+
+  c.style.zIndex = "0"; //
+
+  c.classList.add("no-move");
+  c.classList.add("fade-out");
+
+setTimeout(() => {
+
+  // step 1: keep old position for fade-out (DON'T change pos yet)
+  c.classList.add("fade-out");
+
+  setTimeout(() => {
+
+    // step 2: now move it AFTER fade starts
     c.classList.remove(currentClass);
-    c.classList.add("pos" + next);
+    c.classList.add("pos0");
+
+    c.classList.remove("fade-out");
+    c.classList.add("fade-in");
+
+    setTimeout(() => {
+      c.classList.remove("fade-in");
+      c.classList.remove("no-move");
+      c.style.zIndex = "";
+    }, 1200);
+
+  }, 600); // 50% overlap timing
+
+}, 0);
+
+    } else {
+
+      c.classList.remove(currentClass);
+      c.classList.add("pos" + next);
+
+    }
 
   });
 
 }, 2400);
+
+
+
   
 // budget live value
 
