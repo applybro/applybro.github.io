@@ -69,16 +69,6 @@ header{
 }
   
 /* CARDS */
-.cards{
-  position:relative;
-  height:350px;
-  margin-top:80px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  perspective:1200px;
-}
-
 .card{
   position:absolute;
   left:50%;
@@ -87,7 +77,6 @@ header{
   height:320px;
   border-radius:20px;
   overflow:hidden;
-
   background:#222;
   box-shadow:0 15px 30px rgba(168,85,247,0.3);
 
@@ -617,8 +606,6 @@ const cards = document.querySelectorAll(".card");
 let running = false;
 
 setInterval(() => {
-  if(running) return;
-  running = true;
 
   cards.forEach(c => {
 
@@ -632,8 +619,6 @@ setInterval(() => {
     c.classList.add("pos" + next);
 
   });
-
-  setTimeout(()=> running = false, 1200);
 
 }, 2400);
   
