@@ -87,11 +87,17 @@ header{
   height:320px;
   border-radius:20px;
   overflow:hidden;
-  transition: opacity 0.4s ease;
+
+  /* 🔥 यही fix है */
+  transition: transform 0.8s ease, opacity 0.4s ease;
+
   background:#222;
   box-shadow:0 15px 30px rgba(168,85,247,0.3);
 }
 
+  .no-move{
+  transition: opacity 0.4s ease !important;
+}
   .fade-out{
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -550,7 +556,8 @@ setInterval(() => {
     if(n === 4){
       c.classList.add("fade-out");
 
- setInterval(() => {
+
+setInterval(() => {
 
   cards.forEach(c => {
 
@@ -560,18 +567,17 @@ setInterval(() => {
     let n = Number(currentClass.replace("pos", ""));
     let next = (n + 1) % 5;
 
-    // 👉 ONLY right वाला (pos4)
     if(n === 4){
 
-      // slide रोकना
+      // 👉 slide बंद
       c.classList.add("no-move");
 
-      // fade out
+      // 👉 fade out
       c.classList.add("fade-out");
 
       setTimeout(() => {
 
-        // position change (invisible)
+        // invisible रहते हुए jump to left
         c.classList.remove(currentClass);
         c.classList.add("pos0");
 
@@ -579,10 +585,10 @@ setInterval(() => {
         c.classList.remove("fade-out");
         c.classList.add("fade-in");
 
-        setTimeout(()=>{
+        setTimeout(() => {
           c.classList.remove("fade-in");
           c.classList.remove("no-move");
-        },400);
+        }, 400);
 
       }, 400);
 
@@ -597,8 +603,6 @@ setInterval(() => {
   });
 
 }, 2500);
-  
-
 
 
   
