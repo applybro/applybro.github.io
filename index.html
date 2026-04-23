@@ -87,7 +87,7 @@ header{
   height:320px;
   border-radius:20px;
   overflow:hidden;
-  transition: transform 0.8s ease, opacity 0.4s ease;
+  transition: opacity 0.4s ease;
   background:#222;
   box-shadow:0 15px 30px rgba(168,85,247,0.3);
 }
@@ -526,6 +526,7 @@ const cards=document.querySelectorAll(".card");
 
 
 
+
 setInterval(() => {
 
   cards.forEach(c => {
@@ -536,33 +537,39 @@ setInterval(() => {
     let n = Number(currentClass.replace("pos", ""));
     let next = (n + 1) % 5;
 
-    // 👉 right side (pos4) fade out
+    // 👉 सिर्फ last वाला fade out
     if(n === 4){
       c.classList.add("fade-out");
-    }
 
-    setTimeout(() => {
+      setTimeout(() => {
 
-      c.classList.remove(currentClass);
-      c.classList.add("pos" + next);
+        // position change AFTER fade out
+        c.classList.remove(currentClass);
+        c.classList.add("pos" + next);
 
-      // 👉 जो left में आया (pos0) उसको fade in
-      if(next === 0){
+        // fade in at left
+        c.classList.remove("fade-out");
         c.classList.add("fade-in");
 
         setTimeout(()=>{
           c.classList.remove("fade-in");
         },400);
-      }
 
-      // fade-out remove
-      c.classList.remove("fade-out");
+      }, 400); // wait for fade-out
 
-    }, 300);
+    } else {
+
+      // बाकी cards instantly shift (no animation)
+      c.classList.remove(currentClass);
+      c.classList.add("pos" + next);
+
+    }
 
   });
 
 }, 2500);
+  
+
 
 
   
