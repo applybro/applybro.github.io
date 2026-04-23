@@ -430,9 +430,11 @@ const formModal = document.getElementById("formModal");
 function openForm(){
   formModal.style.display = "flex";
   document.body.style.overflow = "hidden";
-  window.scrollTo({ top: 0, behavior: "instant" });
+  window.scrollTo(0,0);
 }
 
+
+  
 function closeForm(){
   formModal.style.display = "none";
   document.body.style.overflow = "auto";
@@ -459,12 +461,14 @@ setInterval(() => {
   
 // budget live value
 
-const budgetValue=document.getElementById("budgetValue");
+const budgetRange = document.getElementById("budgetRange");
+const budgetValue = document.getElementById("budgetValue");
 
 budgetRange.addEventListener("input",()=>{
-budgetValue.innerText="$"+budgetRange.value;
+  budgetValue.innerText="$"+budgetRange.value;
 });
 
+  
   const page = document.getElementById("page");
 
 let target = 0;
