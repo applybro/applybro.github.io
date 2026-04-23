@@ -538,19 +538,14 @@ setInterval(() => {
 
     if(n === 4){
 
-      // 👉 slide बंद (right side hide)
       c.classList.add("no-move");
-
-      // 👉 fade out
       c.classList.add("fade-out");
 
       setTimeout(() => {
 
-        // jump to left (invisible)
         c.classList.remove(currentClass);
         c.classList.add("pos0");
 
-        // fade in
         c.classList.remove("fade-out");
         c.classList.add("fade-in");
 
@@ -563,7 +558,6 @@ setInterval(() => {
 
     } else {
 
-      // 👉 बाकी cards normal slide
       c.classList.remove(currentClass);
       c.classList.add("pos" + next);
 
@@ -572,52 +566,7 @@ setInterval(() => {
   });
 
 }, 2500);
-  
 
-  cards.forEach(c => {
-
-    let currentClass = [...c.classList].find(x => x.startsWith("pos"));
-    if (!currentClass) return;
-
-    let n = Number(currentClass.replace("pos", ""));
-    let next = (n + 1) % 5;
-
-    if(n === 4){
-
-      // 👉 slide बंद
-      c.classList.add("no-move");
-
-      // 👉 fade out
-      c.classList.add("fade-out");
-
-      setTimeout(() => {
-
-        // invisible रहते हुए jump to left
-        c.classList.remove(currentClass);
-        c.classList.add("pos0");
-
-        // fade in
-        c.classList.remove("fade-out");
-        c.classList.add("fade-in");
-
-        setTimeout(() => {
-          c.classList.remove("fade-in");
-          c.classList.remove("no-move");
-        }, 400);
-
-      }, 400);
-
-    } else {
-
-      // 👉 बाकी cards normal slide करेंगे
-      c.classList.remove(currentClass);
-      c.classList.add("pos" + next);
-
-    }
-
-  });
-
-}, 2500);
 
 
   
