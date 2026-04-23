@@ -124,13 +124,38 @@ header{
   object-fit:cover;
 }
 
-/* CURVE */
-.pos0{transform:translate(-50%,-50%) translateX(-300px) translateY(60px) rotate(-18deg) scale(0.8);}
-.pos1{transform:translate(-50%,-50%) translateX(-150px) translateY(30px) rotate(-8deg) scale(0.9);}
-.pos2{transform:translate(-50%,-50%) translateX(0) scale(1.15); z-index:5;}
-.pos3{transform:translate(-50%,-50%) translateX(150px) translateY(30px) rotate(8deg) scale(0.9);}
-.pos4{transform:translate(-50%,-50%) translateX(300px) translateY(60px) rotate(18deg) scale(0.8);}
 
+  
+
+/* CURVE */
+.pos0{
+  z-index:1;
+  transform:translate(-50%,-50%) translateX(-300px) translateY(60px) rotate(-18deg) scale(0.8);
+}
+
+.pos1{
+  z-index:2;
+  transform:translate(-50%,-50%) translateX(-150px) translateY(30px) rotate(-8deg) scale(0.9);
+}
+
+.pos2{
+  z-index:5;
+  transform:translate(-50%,-50%) translateX(0) scale(1.15);
+}
+
+.pos3{
+  z-index:2;
+  transform:translate(-50%,-50%) translateX(150px) translateY(30px) rotate(8deg) scale(0.9);
+}
+
+.pos4{
+  z-index:1;
+  transform:translate(-50%,-50%) translateX(300px) translateY(60px) rotate(18deg) scale(0.8);
+}
+
+
+
+  
 /* STATS */
 .stats{
   display:flex;
@@ -536,10 +561,12 @@ setInterval(() => {
     let n = Number(currentClass.replace("pos", ""));
     let next = (n + 1) % 5;
 
-    if(n === 4){
+   if(n === 4){
 
-      c.classList.add("no-move");
-      c.classList.add("fade-out");
+  c.style.zIndex = "0"; //
+
+  c.classList.add("no-move");
+  c.classList.add("fade-out");
 
       setTimeout(() => {
 
@@ -549,10 +576,11 @@ setInterval(() => {
         c.classList.remove("fade-out");
         c.classList.add("fade-in");
 
-        setTimeout(() => {
-          c.classList.remove("fade-in");
-          c.classList.remove("no-move");
-        }, 1200);
+       setTimeout(() => {
+  c.classList.remove("fade-in");
+  c.classList.remove("no-move");
+  c.style.zIndex = ""; // 
+}, 1200);
 
       }, 600);
 
