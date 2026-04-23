@@ -88,7 +88,7 @@ header{
   border-radius:20px;
   overflow:hidden;
 
-  transition: transform 0.8s ease, opacity 0.4s ease;
+  transition: transform 0.8s ease, opacity 0.8s ease;
 
   background:#222;
   box-shadow:0 15px 30px rgba(168,85,247,0.3);
@@ -108,7 +108,7 @@ header{
 /* fade in */
 .fade-in{
   opacity:0;
-  animation:fadeIn 0.4s forwards;
+  animation:fadeIn 0.8s forwards;
 }
 
 @keyframes fadeIn{
@@ -552,9 +552,9 @@ setInterval(() => {
         setTimeout(() => {
           c.classList.remove("fade-in");
           c.classList.remove("no-move");
-        }, 400);
+        }, 800);
 
-      }, 400);
+      }, 800);
 
     } else {
 
