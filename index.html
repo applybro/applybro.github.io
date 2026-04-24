@@ -236,14 +236,19 @@ header{
 /* MODAL */
 .modal{
   position:fixed;
-  inset:0;
+  top:0;
+  left:0;
+  width:100%;
+  height:auto;
+
   display:none;
-  justify-content:center;
-  align-items:center;
+  justify-content:flex-start; /* TOP PE LE AAYEGA */
+  align-items:flex-start;
+
   background:rgba(0,0,0,0.85);
   z-index:999999;
   overflow:auto;
-  padding:20px;
+  padding-top:40px; /* top gap */
 }
 
 .modal-box{
@@ -256,9 +261,11 @@ header{
 .modal-box{
   width:90%;
   max-width:500px;
-  margin:auto;
-}
+  margin:0 auto;
 
+  position:relative;
+  top:0;   /* important */
+}
   #videoModal{
   position:fixed;
   inset:0;
