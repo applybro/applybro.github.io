@@ -240,8 +240,17 @@ header{
   display:none;
   justify-content:center;
   align-items:center;
-  background:rgba(0,0,0,0.8);
+  background:rgba(0,0,0,0.85);
   z-index:999999;
+  overflow:auto;
+  padding:20px;
+}
+
+.modal-box{
+  width:90%;
+  max-width:500px;
+  margin:auto;
+  position:relative;
 }
 
 .modal-box{
@@ -249,22 +258,27 @@ header{
   max-width:500px;
   margin:auto;
 }
+
+  #videoModal{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,0.9);
+  z-index:1000000;
+}
+
+  
   .modal-box{
   position:relative;
   z-index:10000;
 }
 
-  .modal{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
+
+
+  
+
   
 input,select{
   width:100%;
@@ -364,20 +378,9 @@ html, body{
   align-items:center;
 }
 
-  .modal{
-  position:fixed;
-  inset:0;
-  display:none;
-  justify-content:center;
-  align-items:center;
-  background:rgba(0,0,0,0.8);
-  z-index:99999;
-}
 
-.modal-box{
-  position:relative;
-  z-index:100000;
-}
+
+
 
 
  @keyframes pulse {
@@ -573,9 +576,11 @@ const formModal = document.getElementById("formModal");
 function openForm(){
   formModal.style.display = "flex";
   document.body.style.overflow = "hidden";
+
+  // FORCE CENTER VIEW (important for mobile)
+  formModal.scrollTop = 0;
   window.scrollTo(0,0);
 }
-
 
   
 function closeForm(){
